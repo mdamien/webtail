@@ -1,0 +1,20 @@
+<html>
+<body>
+<pre id="log">
+</pre>
+<script>
+websocket = new WebSocket("ws://localhost:9000");
+websocket.onopen = function(evt) { console.log(evt) };
+websocket.onclose = function(evt) { console.log(evt) };
+websocket.onmessage = function(evt) {
+try {
+    document.getElementById("log").innerHTML = evt.data + document.getElementById("log").innerHTML ;
+} catch (e){
+    console.log('shit happens '+e);
+}
+};
+websocket.onerror = function(evt) { console.log(evt) };
+
+</script>
+</body>
+</html>
